@@ -6,15 +6,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".page.MainActivity">
+    
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-<!--    <fragment-->
-<!--        android:id="@+id/fragment"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="0dp"-->
-<!--        app:layout_constraintBottom_toTopOf="@+id/linearLayout"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
+        <FrameLayout
+            android:id="@+id/fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </FrameLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -34,6 +39,7 @@
             android:layout_weight="1" />
 
         <ImageButton
+            android:id="@+id/btn_home"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:src="@drawable/button_home_states"
@@ -47,6 +53,7 @@
             android:layout_weight="1" />
 
         <ImageButton
+            android:id="@+id/btn_user"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:src="@drawable/button_user_states"
