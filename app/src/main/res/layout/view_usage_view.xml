@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tv_today_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="01 : 10 : 32"
+        android:textSize="36sp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/tv_than_yesterday_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="어제보다-1시간 10분"
+        android:textSize="16sp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_today_time"
+        tools:ignore="HardcodedText" />
+
+    <ImageView
+        android:id="@+id/image_updown"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginEnd="6dp"
+        android:scaleType="center"
+        app:layout_constraintEnd_toStartOf="@+id/tv_than_yesterday_time"
+        app:layout_constraintTop_toTopOf="@+id/tv_than_yesterday_time"
+        app:srcCompat="@drawable/ic_blue_arrow_circle_down_24" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

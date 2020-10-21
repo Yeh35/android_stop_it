@@ -3,12 +3,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".page.home.HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:scrollbarStyle="outsideOverlay">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.yeh35.android.stop_it.widget.TitleFrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:title="사용시간">
+
+                <com.yeh35.android.stop_it.widget.UsageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </com.yeh35.android.stop_it.widget.TitleFrameLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </FrameLayout>
