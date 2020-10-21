@@ -41,11 +41,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onBackPressed() {
         if (viewStatus == ViewStatus.HOME) {
-            if (onHomeBackPressedTime.plusMillis(200).isAfterNow) {
+            if (onHomeBackPressedTime.plusMillis(1000).isBeforeNow) {
                 onHomeBackPressedTime = DateTime.now()
                 Snackbar.make(fragment_container, "한번더 누르면 앱이 종료됩니다.", Snackbar.LENGTH_SHORT).show()
             } else {
-                super.onBackPressed()
+                finish()
             }
 
 

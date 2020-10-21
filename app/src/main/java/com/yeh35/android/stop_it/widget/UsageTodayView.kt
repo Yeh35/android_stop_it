@@ -9,7 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.yeh35.android.stop_it.R
 
-class UsageView(context: Context, attrs: AttributeSet) : FrameLayout(context, attrs) {
+class UsageTodayView(context: Context, attrs: AttributeSet) : FrameLayout(context, attrs) {
 
     companion object {
         private const val DAY_IN_SECONDS = 24 * 60 * 60
@@ -34,12 +34,12 @@ class UsageView(context: Context, attrs: AttributeSet) : FrameLayout(context, at
         tvTodayTime = baseView.findViewById(R.id.tv_today_time)
         tvThanYesterdayTime = baseView.findViewById(R.id.tv_than_yesterday_time)
         imageUpDown = baseView.findViewById(R.id.image_updown)
+
+        updateView()
     }
 
     fun tick() {
-        todayPlayTime += 1
-        todayPlayTime %= DAY_IN_SECONDS
-        updateView()
+        addTodayPlayTime(1)
     }
 
     fun getYesterdayPlayTime(): Int {
@@ -79,15 +79,22 @@ class UsageView(context: Context, attrs: AttributeSet) : FrameLayout(context, at
     }
 
     private fun updateView() {
+        var playTime = todayPlayTime;
+        val todaySeconds: Int = playTime % MINUTE_IN_SECONDS
+        playTime -= todaySeconds
+        val todayMinute: Int = playTime % HOUR_IN_SECONDS / MINUTE_IN_SECONDS
+        playTime -= todayMinute
         val todayHour: Int = todayPlayTime / HOUR_IN_SECONDS
-        val todayMinute: Int = todayPlayTime - (todayHour * HOUR_IN_SECONDS) / MINUTE_IN_SECONDS
-        val todaySeconds: Int =
-            todayPlayTime - (todayHour * HOUR_IN_SECONDS) - (todayMinute * MINUTE_IN_SECONDS)
+
         tvTodayTime.text = String.format("%02d : %02d : %02d", todayHour, todayMinute, todaySeconds)
 
-        val gapTime = todayPlayTime - yesterdayPlayTime
+        var gapTime = todayPlayTime - yesterdayPlayTime
+        val gapSeconds: Int = gapTime % MINUTE_IN_SECONDS
+        gapTime -= gapSeconds
+        val gapMinute: Int = gapTime % HOUR_IN_SECONDS / MINUTE_IN_SECONDS
+        gapTime -= gapMinute
         val gapHour: Int = gapTime / HOUR_IN_SECONDS
-        val gapMinute: Int = gapTime - (gapHour * HOUR_IN_SECONDS) / MINUTE_IN_SECONDS
+
         var thanYesterdayText = context.resources.getString(R.string.than_yesterday)
         thanYesterdayText += if (gapHour > 0) "${gapHour}시간" else ""
         thanYesterdayText += "${gapMinute}분"

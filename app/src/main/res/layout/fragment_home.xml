@@ -20,7 +20,8 @@
                 android:layout_height="wrap_content"
                 app:title="사용시간">
 
-                <com.yeh35.android.stop_it.widget.UsageView
+                <com.yeh35.android.stop_it.widget.UsageTodayView
+                    android:id="@+id/usage_today"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
