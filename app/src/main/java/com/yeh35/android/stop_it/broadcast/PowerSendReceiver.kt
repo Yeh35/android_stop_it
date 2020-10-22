@@ -19,6 +19,9 @@ class PowerSendReceiver : BroadcastReceiver() {
             intent.action.equals(Intent.ACTION_USER_PRESENT) -> {
                 Log.e("In on receive", "In Method:  ACTION_USER_PRESENT")
             }
+            else -> {
+                Log.e("In on receive", "In Method:  ${intent.action.toString()}")
+            }
         }
     }
 
