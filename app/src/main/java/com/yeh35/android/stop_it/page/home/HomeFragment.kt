@@ -1,7 +1,6 @@
 package com.yeh35.android.stop_it.page.home
 
 import android.os.Bundle
-import android.view.Display
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,10 +8,7 @@ import android.view.ViewGroup
 import com.siblingelement.location_alarm_android_app.ui.baase.BaseFragment
 import com.yeh35.android.stop_it.R
 import com.yeh35.android.stop_it.widget.UsageTodayView
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import java.util.concurrent.ThreadFactory
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -32,6 +28,18 @@ class HomeFragment : BaseFragment() {
     private lateinit var usageTodayView: UsageTodayView
 
     private var isRunning = false
+    private val repeatedInSecondsThread: Thread
+
+    init {
+        repeatedInSecondsThread = Thread(Runnable {
+            while (isRunning) {
+                scopeMain.launch {
+                    usageTodayView.tick()
+                }
+                Thread.sleep(1000)
+            }
+        })
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,14 +63,7 @@ class HomeFragment : BaseFragment() {
         super.onStart()
         isRunning = true
 
-        Thread(Runnable {
-            while (isRunning) {
-                scopeMain.launch {
-                    usageTodayView.tick()
-                }
-                Thread.sleep(1000)
-            }
-        }).start()
+        repeatedInSecondsThread.start()
     }
 
     override fun onStop() {
