@@ -21,4 +21,16 @@
     <color name="light_orange">#FFA658</color>
     <color name="light_blue">#57B0FF</color>
     <color name="vivid_turquoise">#1DDFFF</color>
+
+
+    <color name="pointCyan50">#E0F7FA</color>
+    <color name="pointCyan100">#B2EBF2</color>
+    <color name="pointCyan200">#80DEEA</color>
+    <color name="pointCyan300">#4DD0E1</color>
+    <color name="pointCyan400">#26C6DA</color>
+    <color name="pointCyan500">#00BCD4</color>
+    <color name="pointCyan600">#00ACC1</color>
+    <color name="pointCyan700">#0097A7</color>
+    <color name="pointCyan800">#00838F</color>
+    <color name="pointCyan900">#006064</color>
 </resources>

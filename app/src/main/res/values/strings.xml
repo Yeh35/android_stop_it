@@ -3,7 +3,8 @@
     <string name="home">Home</string>
     <string name="user">User</string>
     <string name="than_yesterday">어제보다-</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="hourglass">모래시계</string>
+    <string name="i_can_nott_stand_it">못참겠어요 할래요</string>
 
 </resources>

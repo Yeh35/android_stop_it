@@ -9,7 +9,7 @@ class BootingReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context?, intent: Intent?) {
         if (BuildConfig.DEBUG && intent!!.action != Intent.ACTION_BOOT_COMPLETED) {
-            error("ACTION_BOOT_COMPLETED만으로 실행되어야 합니다.")
+            error("'ACTION_BOOT_COMPLETED'만으로 실행되어야 합니다.")
         }
 
         ScreenReceiver.registerReceiver(context!!)
