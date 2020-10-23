@@ -13,11 +13,12 @@
     <color name="dimgrey">#696969</color>
     <color name="blue">#0000FF</color>
 
+    <color name="gray_background">#EEEEEE</color>
 
     <color name="yelow1">#FEF6DF</color>
     <color name="yelow3">#FFD55F</color>
-    <color name="brightOrange">#FFC41F</color>
-    <color name="lightOrange">#FFA658</color>
-    <color name="lightBlue">#57B0FF</color>
-    <color name="vividTurquoise">#1DDFFF</color>
+    <color name="bright_orange">#FFC41F</color>
+    <color name="light_orange">#FFA658</color>
+    <color name="light_blue">#57B0FF</color>
+    <color name="vivid_turquoise">#1DDFFF</color>
 </resources>

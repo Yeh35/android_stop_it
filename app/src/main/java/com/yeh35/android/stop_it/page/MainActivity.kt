@@ -1,14 +1,16 @@
 package com.yeh35.android.stop_it.page
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import com.yeh35.android.stop_it.R
+import com.yeh35.android.stop_it.broadcast.ScreenReceiver
 import com.yeh35.android.stop_it.page.home.HomeFragment
 import com.yeh35.android.stop_it.page.user.UserFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import org.joda.time.DateTime
+
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -25,6 +27,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         btn_user.setOnClickListener(this)
 
         replaceFragment(ViewStatus.HOME)
+
+        ScreenReceiver.registerReceiver(this)
     }
 
     override fun onClick(v: View?) {

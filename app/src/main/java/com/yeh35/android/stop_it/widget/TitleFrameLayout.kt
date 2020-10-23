@@ -1,7 +1,6 @@
 package com.yeh35.android.stop_it.widget
 
 import android.content.Context
-import android.graphics.Canvas
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
