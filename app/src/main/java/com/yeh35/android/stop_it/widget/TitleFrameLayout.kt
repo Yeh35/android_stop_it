@@ -5,6 +5,7 @@ import android.graphics.Canvas
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.core.content.res.getStringOrThrow
@@ -39,13 +40,49 @@ open class TitleFrameLayout(context: Context, attrs: AttributeSet) : FrameLayout
         }
     }
 
-    override fun onDraw(canvas: Canvas?) {
-        super.onDraw(canvas)
+    override fun addView(child: View?, index: Int) {
+        if (baseView == child) {
+            super.addView(child, index)
+        } else {
+            frame.addView(child, index)
+            invalidate()
+        }
+    }
 
-        tvTitle.text = title
+    override fun addView(child: View?, params: ViewGroup.LayoutParams?) {
+        if (baseView == child) {
+            super.addView(child, params)
+        } else {
+            frame.addView(child, params)
+            invalidate()
+        }
+    }
+
+    override fun addView(child: View?, index: Int, params: ViewGroup.LayoutParams?) {
+        if (baseView == child) {
+            super.addView(child, index, params)
+        } else {
+            frame.addView(child, index, params)
+            invalidate()
+        }
+    }
+
+    override fun addView(child: View?, width: Int, height: Int) {
+        if (baseView == child) {
+            super.addView(child, width, height)
+        } else {
+            frame.addView(child, width, height)
+            invalidate()
+        }
     }
 
     override fun addView(child: View?) {
-        frame.addView(child)
+        if (baseView == child) {
+            super.addView(child)
+        } else {
+            frame.addView(child)
+            invalidate()
+        }
     }
+
 }

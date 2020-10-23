@@ -6,6 +6,7 @@ import android.view.View
 import com.google.android.material.snackbar.Snackbar
 import com.yeh35.android.stop_it.R
 import com.yeh35.android.stop_it.page.home.HomeFragment
+import com.yeh35.android.stop_it.page.user.UserFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import org.joda.time.DateTime
 
@@ -14,6 +15,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private var viewStatus: ViewStatus? = null
     private var onHomeBackPressedTime: DateTime = DateTime.now()
     private val homeFragment = HomeFragment()
+    private val userFragment = UserFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,7 +50,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 finish()
             }
 
-
         } else {
             replaceFragment(ViewStatus.HOME)
         }
@@ -70,10 +71,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             }
 
             ViewStatus.USER -> {
-//                val transaction = supportFragmentManager.beginTransaction()
-////                transaction.replace(R.id.fragment_container, startingFragment)
-//                transaction.addToBackStack(null)
-//                transaction.commit()
+                val transaction = supportFragmentManager.beginTransaction()
+                transaction.replace(R.id.fragment_container, userFragment)
+                transaction.addToBackStack(null)
+                transaction.commit()
             }
 
             else -> {
