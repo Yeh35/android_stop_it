@@ -13,6 +13,7 @@ import com.siblingelement.location_alarm_android_app.util.preference.SharedPrefe
 import com.yeh35.android.stop_it.R
 import com.yeh35.android.stop_it.broadcast.ScreenReceiver
 import com.yeh35.android.stop_it.page.home.HomeFragment
+import com.yeh35.android.stop_it.page.permission.AlertWindowPermissionActivity
 import com.yeh35.android.stop_it.page.user.UserFragment
 import com.yeh35.android.stop_it.util.preference.SharedPreferenceManager
 import kotlinx.android.synthetic.main.activity_main.*
@@ -20,9 +21,6 @@ import org.joda.time.DateTime
 
 
 class MainActivity : BaseActivity(), View.OnClickListener {
-
-    //TODO 나중에 옮겨야할지도.
-    val ACTION_MANAGE_OVERLAY_PERMISSION_REQUEST_CODE = 2323
 
     private lateinit var sharedPreferenceManager: SharedPreferenceManager
     private var viewStatus: ViewStatus? = null
@@ -43,8 +41,8 @@ class MainActivity : BaseActivity(), View.OnClickListener {
 
         sharedPreferenceManager = SharedPreferenceManager(this)
 
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q && !Settings.canDrawOverlays(this)) {
-            RequestPermission()
+        if (!AlertWindowPermissionActivity.checkWindowPermission(this)) {
+            AlertWindowPermissionActivity.showWindowPermission(this)
         }
     }
 
@@ -121,34 +119,4 @@ class MainActivity : BaseActivity(), View.OnClickListener {
         HOME,
         USER
     }
-
-    private fun RequestPermission() {
-        // Check if Android M or higher
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            // Show alert dialog to the user saying a separate permission is needed
-            // Launch the settings activity if the user prefers
-            val intent = Intent(
-                Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
-                Uri.parse("package:" + this.packageName)
-            )
-            startActivityForResult(intent, ACTION_MANAGE_OVERLAY_PERMISSION_REQUEST_CODE)
-        }
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == ACTION_MANAGE_OVERLAY_PERMISSION_REQUEST_CODE) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                if (!Settings.canDrawOverlays(this)) {
-//                    PermissionDenied()
-                    Log.d("권한", "권한을 못받았습니다.")
-                } else {
-                    // Permission Granted-System will work
-                }
-            }
-        }
-    }
-
-
-
 }

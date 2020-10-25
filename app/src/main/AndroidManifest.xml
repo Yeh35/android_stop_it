@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.yeh35.android.stop_it">
-
     <!-- 사용 권한 설정 -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.PREVENT_POWER_KEY" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <application
         android:allowBackup="true"
@@ -16,16 +15,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Stop_it">
 
+        <activity
+            android:name=".page.permission.AlertWindowPermissionActivity" />
+
         <activity android:name=".page.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".page.defence.DefenceActivity"
-            android:taskAffinity=""
-            android:excludeFromRecents="true"/>
+        <activity
+            android:name=".page.defence.DefenceActivity"
+            android:excludeFromRecents="true"
+            android:taskAffinity="" />
 
         <receiver android:name=".broadcast.BootingReceiver">
             <intent-filter>
@@ -33,8 +36,7 @@
             </intent-filter>
         </receiver>
 
-        <receiver android:name=".broadcast.ScreenReceiver">
-        </receiver>
+        <receiver android:name=".broadcast.ScreenReceiver"/>
     </application>
 
 </manifest>
