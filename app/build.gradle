@@ -60,4 +60,8 @@ dependencies {
 
     //Date Time Libeary로 아직 Java8에 java.time 라이브러리를 쓰러면 APK26 이상이여야 하는데 점유율이 아직 낮다.
     implementation 'joda-time:joda-time:2.10.6'
+
+    // Glide : for URL Image Loading
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
 }

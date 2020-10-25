@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TextAppearance.TypographyStyles.Headline1" parent="TextAppearance.MaterialComponents.Headline1">
+        <item name="fontFamily">@font/jua</item>
+        <item name="android:fontFamily">@font/jua</item>
+        <item name="android:textSize">105sp</item>
+    </style>
+
+    <style name="TextAppearance.TypographyStyles.Headline2" parent="TextAppearance.MaterialComponents.Headline2">
+        <item name="fontFamily">@font/jua</item>
+        <item name="android:fontFamily">@font/jua</item>
+        <item name="android:textSize">66sp</item>
+    </style>
+
+    <style name="TextAppearance.TypographyStyles.Headline3" parent="TextAppearance.MaterialComponents.Headline3">
+        <item name="fontFamily">@font/jua</item>
+        <item name="android:fontFamily">@font/jua</item>
+        <item name="android:textSize">52sp</item>
+    </style>
+
+    <style name="TextAppearance.TypographyStyles.Headline4" parent="TextAppearance.MaterialComponents.Headline4">
+        <item name="fontFamily">@font/jua</item>
+        <item name="android:fontFamily">@font/jua</item>
+        <item name="android:textSize">37sp</item>
+    </style>
+
+    <style name="TextAppearance.TypographyStyles.Headline5" parent="TextAppearance.MaterialComponents.Headline5">
+        <item name="fontFamily">@font/jua</item>
+        <item name="android:fontFamily">@font/jua</item>
+        <item name="android:textSize">26sp</item>
+    </style>
+
+    <style name="TextAppearance.TypographyStyles.Headline6" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="fontFamily">@font/jua</item>
+        <item name="android:fontFamily">@font/jua</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+
+    <style name="TextAppearance.TypographyStyles.Subtitle1" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="fontFamily">@font/jua</item>
+        <item name="android:fontFamily">@font/jua</item>
+        <item name="android:textSize">17sp</item>
+    </style>
+
+    <style name="TextAppearance.TypographyStyles.Subtitle2" parent="TextAppearance.MaterialComponents.Subtitle2">
+        <item name="fontFamily">@font/jua</item>
+        <item name="android:fontFamily">@font/jua</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="TextAppearance.TypographyStyles.Body1" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="fontFamily">@font/nanum_gothic</item>
+        <item name="android:fontFamily">@font/nanum_gothic</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="TextAppearance.TypographyStyles.Body2" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="fontFamily">@font/nanum_gothic</item>
+        <item name="android:fontFamily">@font/nanum_gothic</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextAppearance.TypographyStyles.Button" parent="TextAppearance.MaterialComponents.Button">
+        <item name="fontFamily">@font/nanum_gothic</item>
+        <item name="android:fontFamily">@font/nanum_gothic</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="TextAppearance.TypographyStyles.Caption" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="fontFamily">@font/nanum_gothic</item>
+        <item name="android:fontFamily">@font/nanum_gothic</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="TextAppearance.TypographyStyles.Overline" parent="TextAppearance.MaterialComponents.Overline">
+        <item name="fontFamily">@font/nanum_gothic</item>
+        <item name="android:fontFamily">@font/nanum_gothic</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+</resources>
