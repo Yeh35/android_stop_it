@@ -103,15 +103,6 @@ class OnLockService : Service() {
         Log.d("OnLockService", "onDestroy")
 
         registerRestartAlarm()
-
-//        val calendar: Calendar = Calendar.getInstance()
-//        calendar.timeInMillis = System.currentTimeMillis()
-//        calendar.add(Calendar.SECOND, 3)
-//
-//        val intent = Intent(this, RestartReceiver::class.java)
-//        val sender = PendingIntent.getBroadcast(this, 0, intent, 0)
-//        val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
-//        alarmManager[AlarmManager.RTC_WAKEUP, calendar.timeInMillis] = sender
     }
 
     override fun onTaskRemoved(rootIntent: Intent?) {
@@ -125,15 +116,6 @@ class OnLockService : Service() {
         Log.d("OnLockService", "onTaskRemoved")
 
         registerRestartAlarm()
-
-//        val calendar: Calendar = Calendar.getInstance()
-//        calendar.timeInMillis = System.currentTimeMillis()
-//        calendar.add(Calendar.SECOND, 3)
-//
-//        val intent = Intent(this, RestartReceiver::class.java)
-//        val sender = PendingIntent.getBroadcast(this, 0, intent, 0)
-//        val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
-//        alarmManager[AlarmManager.RTC_WAKEUP, calendar.timeInMillis] = sender
     }
 
     /**
