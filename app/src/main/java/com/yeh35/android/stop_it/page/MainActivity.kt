@@ -1,20 +1,16 @@
 package com.yeh35.android.stop_it.page
 
 import android.content.Intent
-import android.net.Uri
-import android.os.Build
 import android.os.Bundle
-import android.provider.Settings
-import android.util.Log
 import android.view.View
 import com.google.android.material.snackbar.Snackbar
 import com.siblingelement.location_alarm_android_app.ui.baase.BaseActivity
 import com.siblingelement.location_alarm_android_app.util.preference.SharedPreferenceKey
 import com.yeh35.android.stop_it.R
-import com.yeh35.android.stop_it.broadcast.ScreenReceiver
 import com.yeh35.android.stop_it.page.home.HomeFragment
 import com.yeh35.android.stop_it.page.permission.AlertWindowPermissionActivity
 import com.yeh35.android.stop_it.page.user.UserFragment
+import com.yeh35.android.stop_it.service.OnLockService
 import com.yeh35.android.stop_it.util.preference.SharedPreferenceManager
 import kotlinx.android.synthetic.main.activity_main.*
 import org.joda.time.DateTime
@@ -33,17 +29,18 @@ class MainActivity : BaseActivity(), View.OnClickListener {
         setContentView(R.layout.activity_main)
 
         btn_home.setOnClickListener(this)
-        btn_user.setOnClickListener(this)
+//        btn_user.setOnClickListener(this)
 
         replaceFragment(ViewStatus.HOME)
-
-        ScreenReceiver.registerReceiver(this)
 
         sharedPreferenceManager = SharedPreferenceManager(this)
 
         if (!AlertWindowPermissionActivity.checkWindowPermission(this)) {
             AlertWindowPermissionActivity.showWindowPermission(this)
         }
+
+        val serviceIntent = Intent(this, OnLockService::class.java)
+        this.startService(serviceIntent)
     }
 
     override fun onStart() {
@@ -61,9 +58,9 @@ class MainActivity : BaseActivity(), View.OnClickListener {
             btn_home -> {
                 replaceFragment(ViewStatus.HOME)
             }
-            btn_user -> {
-                replaceFragment(ViewStatus.USER)
-            }
+//            btn_user -> {
+//                replaceFragment(ViewStatus.USER)
+//            }
             else -> {
                 error("정의 하지 않은 View 입니다.")
             }
@@ -112,7 +109,7 @@ class MainActivity : BaseActivity(), View.OnClickListener {
         }
 
         btn_home.setImageResource(if (viewStatus == ViewStatus.HOME) R.drawable.icons_home_full else R.drawable.button_home_states)
-        btn_user.setImageResource(if (viewStatus == ViewStatus.USER) R.drawable.icons_user_full else R.drawable.button_user_states)
+        //btn_user.setImageResource(if (viewStatus == ViewStatus.USER) R.drawable.icons_user_full else R.drawable.button_user_states)
     }
 
     private enum class ViewStatus {

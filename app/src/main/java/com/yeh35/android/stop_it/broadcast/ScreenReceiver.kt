@@ -32,14 +32,4 @@ class ScreenReceiver : BroadcastReceiver() {
             }
         }
     }
-
-    companion object {
-
-        fun registerReceiver(context: Context) {
-            val intentFilter = IntentFilter(Intent.ACTION_SCREEN_ON)
-            intentFilter.addAction(Intent.ACTION_SCREEN_OFF)
-            val mReceiver: BroadcastReceiver = ScreenReceiver()
-            context.registerReceiver(mReceiver, intentFilter)
-        }
-    }
 }

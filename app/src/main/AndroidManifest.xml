@@ -25,18 +25,24 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".page.defence.DefenceActivity"
             android:excludeFromRecents="true"
             android:taskAffinity="" />
 
-        <receiver android:name=".broadcast.BootingReceiver">
+        <receiver android:name=".broadcast.BootingReceiver"
+            android:enabled="true"
+            android:exported="false"
+            android:label="OnLock_BroadcastReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
 
         <receiver android:name=".broadcast.ScreenReceiver"/>
+
+        <service android:name=".service.OnLockService"/>
     </application>
 
 </manifest>
