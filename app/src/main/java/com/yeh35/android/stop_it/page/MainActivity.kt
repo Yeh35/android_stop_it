@@ -39,8 +39,11 @@ class MainActivity : BaseActivity(), View.OnClickListener {
             AlertWindowPermissionActivity.showWindowPermission(this)
         }
 
-        val serviceIntent = Intent(this, OnLockService::class.java)
-        this.startService(serviceIntent)
+        if (OnLockService.serviceIntent == null) {
+            val foregroundServiceIntent = Intent(this, OnLockService::class.java)
+            startService(foregroundServiceIntent)
+        }
+        
     }
 
     override fun onStart() {
