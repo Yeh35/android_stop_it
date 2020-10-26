@@ -34,15 +34,17 @@ class OnLockService : Service() {
         registerReceiver(mReceiver, filter)
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         Log.d("OnLockService", "onStartCommand")
+
+        this.initializeNotification()
 
         if (intent == null) {
             val filter = IntentFilter(Intent.ACTION_SCREEN_ON)
             filter.addAction(Intent.ACTION_SCREEN_OFF)
             mReceiver = ScreenReceiver()
             registerReceiver(mReceiver, filter)
-
 
         } else {
             serviceIntent = intent
@@ -94,7 +96,12 @@ class OnLockService : Service() {
 
     override fun onDestroy() {
         super.onDestroy()
-        unregisterReceiver(mReceiver)
+
+        if (mReceiver != null) {
+            unregisterReceiver(mReceiver)
+            mReceiver = null
+        }
+
 
         Log.d("OnLockService", "onDestroy")
 
@@ -110,7 +117,11 @@ class OnLockService : Service() {
 
     override fun onTaskRemoved(rootIntent: Intent?) {
         super.onTaskRemoved(rootIntent)
-        unregisterReceiver(mReceiver)
+
+        if (mReceiver != null) {
+            unregisterReceiver(mReceiver)
+            mReceiver = null
+        }
 
         Log.d("OnLockService", "onTaskRemoved")
 
