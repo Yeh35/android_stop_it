@@ -1,12 +1,18 @@
 package com.yeh35.android.stop_it.database
 
 import android.content.Context
+import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
+import com.yeh35.android.stop_it.database.entity.PhoneUsageLog
+import com.yeh35.android.stop_it.database.type.Converters
 
-//@Database(entities = [], version = 1)
-//@TypeConverters(Converters::class)
+@Database(entities = [PhoneUsageLog::class], version = 1)
+@TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
+
+    
 
     companion object {
 

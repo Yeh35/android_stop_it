@@ -34,13 +34,5 @@ class RestartReceiver : BroadcastReceiver() {
                 error("정의하지 않은 ACTION 입니다.")
             }
         }
-
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//            val serviceIntent = Intent(context, OnLockService::class.java)
-//            context.startForegroundService(serviceIntent)
-//        } else {
-//            val serviceIntent = Intent(context, OnLockService::class.java)
-//            context.startService(serviceIntent)
-//        }
     }
 }

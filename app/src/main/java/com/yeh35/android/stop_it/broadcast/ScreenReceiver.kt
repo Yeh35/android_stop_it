@@ -23,7 +23,6 @@ class ScreenReceiver : BroadcastReceiver() {
 
         if (intent.action == Intent.ACTION_SCREEN_ON) {
             val isDefenseRunning = sharedPreferenceManager.get(SharedPreferenceKey.IS_DEFENSE_RUNNING) as Boolean
-//            val isMainRunning = sharedPreferenceManager.get(SharedPreferenceKey.IS_MAIN_RUNNING) as Boolean
 
             if (!isDefenseRunning) {
                 val startIntent = Intent(context, DefenceActivity::class.java)

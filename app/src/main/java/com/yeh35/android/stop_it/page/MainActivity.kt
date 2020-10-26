@@ -39,11 +39,11 @@ class MainActivity : BaseActivity(), View.OnClickListener {
             AlertWindowPermissionActivity.showWindowPermission(this)
         }
 
+        // TODO 서비스 serviceIntent로 체크하는게 아니라 현제 등록된 서비스를 읽어와서 체크 해야함
         if (OnLockService.serviceIntent == null) {
             val foregroundServiceIntent = Intent(this, OnLockService::class.java)
             startService(foregroundServiceIntent)
         }
-        
     }
 
     override fun onStart() {
