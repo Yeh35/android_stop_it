@@ -9,7 +9,6 @@ import com.yeh35.android.stop_it.util.preference.SharedPreferenceKey
 import com.yeh35.android.stop_it.R
 import com.yeh35.android.stop_it.page.home.HomeFragment
 import com.yeh35.android.stop_it.page.permission.AlertWindowPermissionActivity
-import com.yeh35.android.stop_it.page.permission.UsageStatsPermissionActivity
 import com.yeh35.android.stop_it.page.user.UserFragment
 import com.yeh35.android.stop_it.service.OnLockService
 import com.yeh35.android.stop_it.util.preference.SharedPreferenceManager
@@ -40,11 +39,8 @@ class MainActivity : BaseActivity(), View.OnClickListener {
         AlertWindowPermissionActivity.showWindowPermission(this)
 //        UsageStatsPermissionActivity.showForPermission(this)
 
-        // TODO 서비스 serviceIntent로 체크하는게 아니라 현제 등록된 서비스를 읽어와서 체크 해야함
-        if (OnLockService.serviceIntent == null) {
-            val foregroundServiceIntent = Intent(this, OnLockService::class.java)
-            startService(foregroundServiceIntent)
-        }
+        val foregroundServiceIntent = Intent(this, OnLockService::class.java)
+        startService(foregroundServiceIntent)
     }
 
     override fun onStart() {

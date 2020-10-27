@@ -27,7 +27,6 @@ class ScreenReceiver : BroadcastReceiver() {
             if (!isDefenseRunning) {
                 val startIntent = Intent(context, DefenceActivity::class.java)
                 startIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-
                 context.startActivity(startIntent)
             }
         }
