@@ -10,7 +10,6 @@ import android.os.Build
 import android.os.IBinder
 import android.os.SystemClock
 import android.util.Log
-import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import com.yeh35.android.stop_it.broadcast.RestartReceiver
 import com.yeh35.android.stop_it.broadcast.ScreenReceiver
@@ -72,18 +71,18 @@ class OnLockService : Service() {
             notificationManager.createNotificationChannel(
                 NotificationChannel(
                     "1",
-                    "on_lock_service",
+                    "잠금화면",
                     NotificationManager.IMPORTANCE_NONE
                 )
             )
         }
 
-        notificationManager.notify(startId, notification)
-        notificationManager.cancel(startId)
+        startForeground(1, notification)
+//        notificationManager.notify(startId, notification)
+//        notificationManager.cancel(startId)
 
         if (mReceiver == null) {
             val filter = IntentFilter(Intent.ACTION_SCREEN_ON)
-            filter.addAction(Intent.ACTION_SCREEN_OFF)
             mReceiver = ScreenReceiver()
             registerReceiver(mReceiver, filter)
         }
@@ -107,13 +106,12 @@ class OnLockService : Service() {
 
     override fun onTaskRemoved(rootIntent: Intent?) {
         super.onTaskRemoved(rootIntent)
+        Log.d("OnLockService", "onTaskRemoved")
 
         if (mReceiver != null) {
             unregisterReceiver(mReceiver)
             mReceiver = null
         }
-
-        Log.d("OnLockService", "onTaskRemoved")
 
         registerRestartAlarm()
     }

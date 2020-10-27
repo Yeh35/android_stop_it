@@ -3,6 +3,7 @@ package com.yeh35.android.stop_it.page.defence
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.WindowManager
 import com.bumptech.glide.Glide
 import com.yeh35.android.stop_it.BuildConfig
 import com.yeh35.android.stop_it.page.baase.BaseActivity
@@ -28,6 +29,8 @@ class DefenceActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_defance)
+
+        window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
 
         Glide.with(this)
             .load(R.drawable.hourglass)
