@@ -49,6 +49,8 @@
         <activity
             android:name=".page.defence.DefenceActivity"
             android:excludeFromRecents="true"
+            android:showOnLockScreen="true"
+            android:screenOrientation="sensorPortrait"
             android:taskAffinity="" />
 
         <receiver android:name=".broadcast.ScreenReceiver" />

@@ -1,5 +1,6 @@
 package com.yeh35.android.stop_it.page.defence
 
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -32,11 +33,19 @@ class DefenceActivity : BaseActivity() {
 
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
 
+        if (Build.VERSION.SDK_INT >= 27) {
+            setShowWhenLocked(true)
+        } else {
+            window.addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED)
+        }
+
+
         Glide.with(this)
             .load(R.drawable.hourglass)
             .into(iv_hourglass)
 
         sharedPreferenceManager = SharedPreferenceManager(this)
+        sharedPreferenceManager.set(SharedPreferenceKey.LAST_DEFENSE_RUNNING, DateTime.now())
         sharedPreferenceManager.set(SharedPreferenceKey.IS_DEFENSE_RUNNING, true)
 
         defenceUsageLogDao = AppDatabase.getInstance(this).defenceUsageLogDao()

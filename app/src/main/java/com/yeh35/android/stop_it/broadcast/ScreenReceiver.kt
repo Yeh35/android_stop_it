@@ -8,6 +8,7 @@ import com.yeh35.android.stop_it.util.preference.SharedPreferenceKey
 import com.yeh35.android.stop_it.util.preference.SharedPreferenceManager
 import com.yeh35.android.stop_it.BuildConfig
 import com.yeh35.android.stop_it.page.defence.DefenceActivity
+import org.joda.time.DateTime
 
 class ScreenReceiver : BroadcastReceiver() {
 
@@ -21,10 +22,10 @@ class ScreenReceiver : BroadcastReceiver() {
         val sharedPreferenceManager = SharedPreferenceManager(context!!)
 
         if (intent.action == Intent.ACTION_SCREEN_ON) {
+            val lastDefenseRunning = sharedPreferenceManager.get(SharedPreferenceKey.LAST_DEFENSE_RUNNING) as DateTime
             val isDefenseRunning = sharedPreferenceManager.get(SharedPreferenceKey.IS_DEFENSE_RUNNING) as Boolean
-//            val isMainRunning = sharedPreferenceManager.get(SharedPreferenceKey.IS_MAIN_RUNNING) as Boolean
 
-            if (!isDefenseRunning) {
+            if (lastDefenseRunning.plusMinutes(10).isBeforeNow || !isDefenseRunning) {
                 val startIntent = Intent(context, DefenceActivity::class.java)
                 startIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 context.startActivity(startIntent)
