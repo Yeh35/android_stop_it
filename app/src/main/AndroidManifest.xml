@@ -4,14 +4,21 @@
     package="com.yeh35.android.stop_it">
 
     <!-- 사용 권한 설정 -->
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.PREVENT_POWER_KEY" />
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.INTERNET"
+        android:required="false"/>
+    <uses-permission android:name="android.permission.PREVENT_POWER_KEY"
+        android:required="false"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"
+        android:required="false"/>
+    <uses-permission android:name="android.permission.BOOT_COMPLETED"
+        android:required="false"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"
+        android:required="false"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"
+        android:required="false"/>
 <!--    <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS"-->
-<!--        tools:ignore="ProtectedPermissions" />-->
+<!--        android:required="false"-->
+<!--        tools:ignore="ProtectedPermissions"/>-->
 
     <application
         android:allowBackup="false"
