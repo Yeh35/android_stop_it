@@ -9,6 +9,7 @@ import org.joda.time.DateTime
 class PhoneUsageLog(private var wakeUpDateTime: DateTime) : BaseEntity() {
 
     private var sleepDateTime: DateTime? = null
+    private var waited: Boolean = false
 
     fun setSleepDateTime(dateTime: DateTime) {
         sleepDateTime = dateTime
@@ -20,6 +21,10 @@ class PhoneUsageLog(private var wakeUpDateTime: DateTime) : BaseEntity() {
         } else {
             sleepDateTime!!.minus(wakeUpDateTime.millis)
         }
-
     }
+
+    fun waited() {
+        waited = true
+    }
+
 }

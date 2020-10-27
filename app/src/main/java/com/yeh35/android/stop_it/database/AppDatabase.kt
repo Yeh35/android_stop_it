@@ -5,6 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import com.yeh35.android.stop_it.database.dao.PhoneUsageLogDao
 import com.yeh35.android.stop_it.database.entity.PhoneUsageLog
 import com.yeh35.android.stop_it.database.type.Converters
 
@@ -12,7 +13,7 @@ import com.yeh35.android.stop_it.database.type.Converters
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
 
-    
+    abstract fun phoneUsageLogDao(): PhoneUsageLogDao
 
     companion object {
 

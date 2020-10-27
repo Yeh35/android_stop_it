@@ -7,11 +7,33 @@ import org.joda.time.DateTime
 
 abstract class BaseEntity protected constructor() {
     @PrimaryKey(autoGenerate = true)
-    var id: Long = 0
+    private var id: Long = 0
 
     @ColumnInfo(name = "creation_date")
-    var creationDate: DateTime = DateTime.now()
+    private lateinit var creationDate: DateTime
 
     @ColumnInfo(name = "modification_date")
-    var modificationDate: DateTime = DateTime.now()
+    private lateinit var modificationDate: DateTime
+
+    fun getId(): Long {
+        return id
+    }
+
+    fun getCreationDate(): DateTime {
+        return creationDate
+    }
+
+    fun getModificationDate(): DateTime {
+        return modificationDate
+    }
+
+    fun updateDate() {
+        modificationDate = DateTime.now()
+    }
+
+    fun insertDate() {
+        creationDate = DateTime.now()
+        modificationDate = DateTime.now()
+    }
+
 }
