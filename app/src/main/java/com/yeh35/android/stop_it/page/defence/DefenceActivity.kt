@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import com.bumptech.glide.Glide
-import com.siblingelement.location_alarm_android_app.ui.baase.BaseActivity
+import com.yeh35.android.stop_it.page.baase.BaseActivity
 import com.yeh35.android.stop_it.util.preference.SharedPreferenceKey
 import com.yeh35.android.stop_it.util.preference.SharedPreferenceManager
 import com.yeh35.android.stop_it.R
@@ -23,7 +23,6 @@ class DefenceActivity : BaseActivity() {
 
     private var repeatedInSecondsThreadStop = System.currentTimeMillis()
     private val endTime = DateTime.now().plusMinutes(10)
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.google.android.material.snackbar.Snackbar
-import com.siblingelement.location_alarm_android_app.ui.baase.BaseActivity
+import com.yeh35.android.stop_it.page.baase.BaseActivity
 import com.yeh35.android.stop_it.util.preference.SharedPreferenceKey
 import com.yeh35.android.stop_it.R
 import com.yeh35.android.stop_it.page.home.HomeFragment
