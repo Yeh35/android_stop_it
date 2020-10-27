@@ -9,7 +9,9 @@ import android.provider.Settings
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
+import com.yeh35.android.stop_it.BuildConfig
 import com.yeh35.android.stop_it.R
+import kotlinx.android.synthetic.main.activity_alert_window_permission.*
 import kotlinx.android.synthetic.main.activity_main.*
 import org.joda.time.DateTime
 
@@ -21,12 +23,16 @@ class AlertWindowPermissionActivity : AppCompatActivity() {
     companion object {
         private const val ACTION_MANAGE_OVERLAY_PERMISSION_REQUEST_CODE = 2323
 
-        fun checkWindowPermission(context: Context): Boolean {
-            return Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q && !Settings.canDrawOverlays(context)
+        private fun canWindowPermission(context: Context): Boolean {
+            return if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                Settings.canDrawOverlays(context)
+            } else {
+                true
+            }
         }
 
         fun showWindowPermission(context: Context) {
-            if (checkWindowPermission(context)) {
+            if (!canWindowPermission(context)) {
                 val startIntent = Intent(context, AlertWindowPermissionActivity::class.java)
                 context.startActivity(startIntent)
             }
@@ -41,6 +47,9 @@ class AlertWindowPermissionActivity : AppCompatActivity() {
     }
 
     fun onClickGranted(v: View) {
+        if (BuildConfig.DEBUG && v != btn_granted) {
+            error("Assertion failed")
+        }
         requestPermission()
     }
 

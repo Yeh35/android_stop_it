@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import org.joda.time.DateTime
 
+@Suppress("REDUNDANT_ELSE_IN_WHEN")
 class SharedPreferenceManager(context: Context) {
 
     private val sharedPreferences: SharedPreferences =

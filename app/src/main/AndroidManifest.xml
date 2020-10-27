@@ -2,23 +2,29 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.yeh35.android.stop_it">
-
     <!-- 사용 권한 설정 -->
-    <uses-permission android:name="android.permission.INTERNET"
-        android:required="false"/>
-    <uses-permission android:name="android.permission.PREVENT_POWER_KEY"
-        android:required="false"/>
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"
-        android:required="false"/>
-    <uses-permission android:name="android.permission.BOOT_COMPLETED"
-        android:required="false"/>
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"
-        android:required="false"/>
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"
-        android:required="false"/>
-<!--    <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS"-->
-<!--        android:required="false"-->
-<!--        tools:ignore="ProtectedPermissions"/>-->
+    <uses-permission
+        android:name="android.permission.INTERNET"
+        android:required="false" />
+    <uses-permission
+        android:name="android.permission.PREVENT_POWER_KEY"
+        android:required="false" />
+    <uses-permission
+        android:name="android.permission.RECEIVE_BOOT_COMPLETED"
+        android:required="false" />
+    <uses-permission
+        android:name="android.permission.BOOT_COMPLETED"
+        android:required="false" />
+    <uses-permission
+        android:name="android.permission.SYSTEM_ALERT_WINDOW"
+        android:required="false" />
+    <uses-permission
+        android:name="android.permission.FOREGROUND_SERVICE"
+        android:required="false" />
+    <uses-permission
+        android:name="android.permission.PACKAGE_USAGE_STATS"
+        android:required="false"
+        tools:ignore="ProtectedPermissions" />
 
     <application
         android:allowBackup="false"
@@ -27,25 +33,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Stop_it">
-
-        <activity
-            android:name=".page.permission.AlertWindowPermissionActivity" />
-
+        <activity android:name=".page.permission.UsageStatsPermissionActivity"></activity>
+        <activity android:name=".page.permission.AlertWindowPermissionActivity" />
         <activity android:name=".page.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".page.defence.DefenceActivity"
             android:excludeFromRecents="true"
             android:taskAffinity="" />
 
-        <receiver android:name=".broadcast.ScreenReceiver"/>
-        <receiver android:name=".broadcast.RestartReceiver"
+        <receiver android:name=".broadcast.ScreenReceiver" />
+        <receiver
+            android:name=".broadcast.RestartReceiver"
             android:enabled="true"
             android:exported="false"
             android:label="RestartService"
@@ -55,7 +60,7 @@
             </intent-filter>
         </receiver>
 
-        <service android:name=".service.OnLockService"/>
+        <service android:name=".service.OnLockService" />
     </application>
 
 </manifest>

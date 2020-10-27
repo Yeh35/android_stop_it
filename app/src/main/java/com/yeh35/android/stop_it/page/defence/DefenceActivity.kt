@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import com.bumptech.glide.Glide
+import com.yeh35.android.stop_it.BuildConfig
 import com.yeh35.android.stop_it.page.baase.BaseActivity
 import com.yeh35.android.stop_it.util.preference.SharedPreferenceKey
 import com.yeh35.android.stop_it.util.preference.SharedPreferenceManager
@@ -86,6 +87,9 @@ class DefenceActivity : BaseActivity() {
     }
 
     fun onClickPass(v: View) {
+        if (BuildConfig.DEBUG && v != btn_pass) {
+            error("Assertion failed")
+        }
         finish()
     }
 

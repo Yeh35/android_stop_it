@@ -88,8 +88,8 @@ class OnLockService : Service() {
             registerReceiver(mReceiver, filter)
         }
 
-//        return START_STICKY
-        return super.onStartCommand(intent, flags, startId)
+        return START_STICKY
+//        return super.onStartCommand(intent, flags, startId)
     }
 
     override fun onDestroy() {
