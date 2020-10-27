@@ -5,9 +5,12 @@ import android.util.Log
 import android.view.View
 import com.bumptech.glide.Glide
 import com.siblingelement.location_alarm_android_app.ui.baase.BaseActivity
-import com.siblingelement.location_alarm_android_app.util.preference.SharedPreferenceKey
+import com.yeh35.android.stop_it.util.preference.SharedPreferenceKey
 import com.yeh35.android.stop_it.util.preference.SharedPreferenceManager
 import com.yeh35.android.stop_it.R
+import com.yeh35.android.stop_it.database.AppDatabase
+import com.yeh35.android.stop_it.database.dao.DefenceUsageLogDao
+import com.yeh35.android.stop_it.database.entity.DefenceUsageLog
 import kotlinx.android.synthetic.main.activity_defance.*
 import kotlinx.coroutines.launch
 import org.joda.time.DateTime
@@ -15,8 +18,12 @@ import org.joda.time.DateTime
 class DefenceActivity : BaseActivity() {
 
     private lateinit var sharedPreferenceManager: SharedPreferenceManager
+    private lateinit var defenceUsageLogDao: DefenceUsageLogDao
+    private lateinit var phoneUsageLog: DefenceUsageLog
+
     private var repeatedInSecondsThreadStop = System.currentTimeMillis()
     private val endTime = DateTime.now().plusMinutes(10)
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +35,14 @@ class DefenceActivity : BaseActivity() {
 
         sharedPreferenceManager = SharedPreferenceManager(this)
         sharedPreferenceManager.set(SharedPreferenceKey.IS_DEFENSE_RUNNING, true)
+
+        defenceUsageLogDao = AppDatabase.getInstance(this).defenceUsageLogDao()
+
+        scopeIo.launch {
+            phoneUsageLog = DefenceUsageLog()
+            val id = defenceUsageLogDao.insert(phoneUsageLog)
+            phoneUsageLog = defenceUsageLogDao.getFindId(id)
+        }
     }
 
     override fun onStart() {
@@ -37,12 +52,23 @@ class DefenceActivity : BaseActivity() {
             val startingTime = System.currentTimeMillis()
 
             while (repeatedInSecondsThreadStop < startingTime) {
-                scopeMain.launch {
+                val remaining = DateTime(endTime.millis - DateTime.now().millis)
 
-                    val remaining = DateTime(endTime.millis - DateTime.now().millis)
-                    tv_time.text = "${remaining.minuteOfHour} : ${remaining.secondOfMinute}"
+                scopeMain.launch {
+                    tv_time.text = resources.getString(R.string.defence_time_format, remaining.minuteOfHour, remaining.secondOfMinute)
                 }
-                Thread.sleep(1000)
+
+                if (remaining.isAfter(1000)) {
+                    Thread.sleep(1000)
+                } else {
+                    scopeMain.launch {
+                        btn_pass.text = resources.getString(R.string.you_endured)
+                    }
+
+                    phoneUsageLog.waited()
+                    defenceUsageLogDao.update(phoneUsageLog)
+                    break
+                }
             }
 
             Log.d("repeatedInSecondsThread", "stop")
@@ -56,6 +82,7 @@ class DefenceActivity : BaseActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
+        repeatedInSecondsThreadStop = System.currentTimeMillis()
         sharedPreferenceManager.set(SharedPreferenceKey.IS_DEFENSE_RUNNING, false)
     }
 
@@ -63,7 +90,17 @@ class DefenceActivity : BaseActivity() {
         finish()
     }
 
+    /**
+     * Back 키 막기
+     */
     override fun onBackPressed() {
+        return
+    }
+
+    /**
+     * Home 키 막기
+     */
+    override fun onUserLeaveHint() {
         return
     }
 

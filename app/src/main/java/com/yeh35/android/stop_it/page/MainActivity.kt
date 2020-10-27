@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.view.View
 import com.google.android.material.snackbar.Snackbar
 import com.siblingelement.location_alarm_android_app.ui.baase.BaseActivity
-import com.siblingelement.location_alarm_android_app.util.preference.SharedPreferenceKey
+import com.yeh35.android.stop_it.util.preference.SharedPreferenceKey
 import com.yeh35.android.stop_it.R
 import com.yeh35.android.stop_it.page.home.HomeFragment
 import com.yeh35.android.stop_it.page.permission.AlertWindowPermissionActivity
@@ -16,6 +16,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import org.joda.time.DateTime
 
 
+@Suppress("REDUNDANT_ELSE_IN_WHEN")
 class MainActivity : BaseActivity(), View.OnClickListener {
 
     private lateinit var sharedPreferenceManager: SharedPreferenceManager

@@ -2,7 +2,6 @@ package com.yeh35.android.stop_it.util.preference
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.siblingelement.location_alarm_android_app.util.preference.SharedPreferenceKey
 import org.joda.time.DateTime
 
 class SharedPreferenceManager(context: Context) {

@@ -3,9 +3,8 @@ package com.yeh35.android.stop_it.broadcast
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import android.content.IntentFilter
 import android.util.Log
-import com.siblingelement.location_alarm_android_app.util.preference.SharedPreferenceKey
+import com.yeh35.android.stop_it.util.preference.SharedPreferenceKey
 import com.yeh35.android.stop_it.util.preference.SharedPreferenceManager
 import com.yeh35.android.stop_it.BuildConfig
 import com.yeh35.android.stop_it.page.defence.DefenceActivity

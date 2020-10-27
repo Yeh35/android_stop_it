@@ -5,9 +5,12 @@
     <string name="than_yesterday">어제보다-</string>
 
     <string name="hourglass">모래시계</string>
-    <string name="i_can_nott_stand_it">못참겠어요 할래요</string>
     <string name="grented">허용</string>
     <string name="request_access">윈도우 권한 요청</string>
     <string name="request_access_alert_window">윈도우 권한을 허용해주세요</string>
+
+    <string name="defence_time_format">%d : %d</string>
+    <string name="i_can_nott_stand_it">못참겠어요 할래요</string>
+    <string name="you_endured">오! 참아내셨군요</string>
 
 </resources>

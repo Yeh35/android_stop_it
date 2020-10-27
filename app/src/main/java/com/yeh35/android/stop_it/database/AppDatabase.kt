@@ -5,15 +5,17 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.yeh35.android.stop_it.database.dao.PhoneUsageLogDao
-import com.yeh35.android.stop_it.database.entity.PhoneUsageLog
+import com.yeh35.android.stop_it.database.dao.DefenceUsageLogDao
+import com.yeh35.android.stop_it.database.entity.DefenceUsageLog
 import com.yeh35.android.stop_it.database.type.Converters
 
-@Database(entities = [PhoneUsageLog::class], version = 1)
+@Database(entities = [DefenceUsageLog::class]
+        , exportSchema = false
+        , version = 1)
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
 
-    abstract fun phoneUsageLogDao(): PhoneUsageLogDao
+    abstract fun defenceUsageLogDao(): DefenceUsageLogDao
 
     companion object {
 

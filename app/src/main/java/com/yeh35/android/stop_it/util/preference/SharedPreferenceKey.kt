@@ -1,6 +1,4 @@
-package com.siblingelement.location_alarm_android_app.util.preference
-
-import com.yeh35.android.stop_it.util.preference.SharedPreferenceType
+package com.yeh35.android.stop_it.util.preference
 
 enum class SharedPreferenceKey(val key: String, val type: SharedPreferenceType) {
 
