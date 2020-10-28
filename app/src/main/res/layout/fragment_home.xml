@@ -6,43 +6,53 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".page.home.HomeFragment">
 
-    <ScrollView
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbarStyle="outsideOverlay"
-        android:background="@color/gray_background">
+        android:layout_height="match_parent">
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:scrollbarStyle="outsideOverlay"
+            android:background="@color/gray_background">
 
-            <com.yeh35.android.stop_it.widget.TitleFrameLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
-                app:title="사용회수">
+                android:orientation="vertical">
 
-                <com.yeh35.android.stop_it.widget.UsageTodayCountView
-                    android:id="@+id/usage_today_count"
+                <com.yeh35.android.stop_it.widget.TitleFrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:layout_marginTop="8dp"
+                    app:title="찾은 양말의 개수">
 
-            </com.yeh35.android.stop_it.widget.TitleFrameLayout>
+                        <com.yeh35.android.stop_it.widget.UsageTodayCountView
+                            android:id="@+id/usage_today_count"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
 
-            <com.yeh35.android.stop_it.widget.TitleFrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:layout_marginTop="8dp"
-                app:title="가드 성적">
+                </com.yeh35.android.stop_it.widget.TitleFrameLayout>
 
+                <com.yeh35.android.stop_it.widget.TitleFrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:layout_marginTop="8dp"
+                    app:title="핸드폰 사용 횟수">
 
+                    <com.yeh35.android.stop_it.widget.UsageTodayCountView
+                        android:id="@+id/usage_count"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
 
-            </com.yeh35.android.stop_it.widget.TitleFrameLayout>
+                </com.yeh35.android.stop_it.widget.TitleFrameLayout>
 
-        </LinearLayout>
+            </LinearLayout>
 
-    </ScrollView>
+        </ScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </FrameLayout>

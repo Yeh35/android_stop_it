@@ -20,6 +20,14 @@ import org.joda.time.DateTime
 
 class DefenceActivity : BaseActivity() {
 
+    companion object {
+        private var live  = false
+
+        fun isLive(): Boolean {
+            return live
+        }
+    }
+
     private lateinit var sharedPreferenceManager: SharedPreferenceManager
     private lateinit var defenceUsageLogDao: DefenceUsageLogDao
     private lateinit var phoneUsageLog: DefenceUsageLog
@@ -31,6 +39,8 @@ class DefenceActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_defance)
 
+        live = true
+
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
 
         if (Build.VERSION.SDK_INT >= 27) {
@@ -39,14 +49,12 @@ class DefenceActivity : BaseActivity() {
             window.addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED)
         }
 
-
         Glide.with(this)
             .load(R.drawable.hourglass)
             .into(iv_hourglass)
 
         sharedPreferenceManager = SharedPreferenceManager(this)
         sharedPreferenceManager.set(SharedPreferenceKey.LAST_DEFENSE_RUNNING, DateTime.now())
-        sharedPreferenceManager.set(SharedPreferenceKey.IS_DEFENSE_RUNNING, true)
 
         defenceUsageLogDao = AppDatabase.getInstance(this).defenceUsageLogDao()
 
@@ -60,15 +68,15 @@ class DefenceActivity : BaseActivity() {
     override fun onStart() {
         super.onStart()
 
+        if (phoneUsageLog.waited) {
+            return
+        }
+
         Thread(Runnable {
             val startingTime = System.currentTimeMillis()
 
             while (repeatedInSecondsThreadStop < startingTime) {
                 val remaining = DateTime(endTime.millis - DateTime.now().millis)
-
-                scopeMain.launch {
-                    tv_time.text = resources.getString(R.string.defence_time_format, remaining.minuteOfHour, remaining.secondOfMinute)
-                }
 
                 if (remaining.isAfter(1000)) {
                     Thread.sleep(1000)
@@ -80,6 +88,14 @@ class DefenceActivity : BaseActivity() {
                     phoneUsageLog.waited()
                     defenceUsageLogDao.update(phoneUsageLog)
                     break
+                }
+
+                scopeMain.launch {
+                    tv_time.text = resources.getString(
+                        R.string.defence_time_format,
+                        remaining.minuteOfHour,
+                        remaining.secondOfMinute
+                    )
                 }
             }
 
@@ -95,7 +111,7 @@ class DefenceActivity : BaseActivity() {
     override fun onDestroy() {
         super.onDestroy()
         repeatedInSecondsThreadStop = System.currentTimeMillis()
-        sharedPreferenceManager.set(SharedPreferenceKey.IS_DEFENSE_RUNNING, false)
+        live = false
     }
 
     fun onClickPass(v: View) {
@@ -116,7 +132,7 @@ class DefenceActivity : BaseActivity() {
      * Home 키 막기
      */
     override fun onUserLeaveHint() {
-        return
+        finish()
     }
 
 }

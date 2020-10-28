@@ -23,9 +23,9 @@ class ScreenReceiver : BroadcastReceiver() {
 
         if (intent.action == Intent.ACTION_SCREEN_ON) {
             val lastDefenseRunning = sharedPreferenceManager.get(SharedPreferenceKey.LAST_DEFENSE_RUNNING) as DateTime
-            val isDefenseRunning = sharedPreferenceManager.get(SharedPreferenceKey.IS_DEFENSE_RUNNING) as Boolean
+//            val isDefenseRunning = sharedPreferenceManager.get(SharedPreferenceKey.IS_DEFENSE_RUNNING) as Boolean
 
-            if (lastDefenseRunning.plusMinutes(10).isBeforeNow || !isDefenseRunning) {
+            if (lastDefenseRunning.plusMinutes(30).isBeforeNow || !DefenceActivity.isLive()) {
                 val startIntent = Intent(context, DefenceActivity::class.java)
                 startIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 context.startActivity(startIntent)

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">stop_it</string>
+    <string name="app_name">양말 없는 또비</string>
     <string name="home">Home</string>
     <string name="user">User</string>
 
@@ -13,7 +13,7 @@
     <string name="request_access_usage_stats">사용자 로그 권한을 허용해주세요</string>
 
     <string name="defence_time_format">%d : %d</string>
-    <string name="i_can_nott_stand_it">못참겠어요 할래요</string>
-    <string name="you_endured">오! 참아내셨군요</string>
+    <string name="i_can_nott_stand_it">아앗.. 아직 양말을 찾지 못했어요, 기다려주세요</string>
+    <string name="you_endured">오! 양말이군요</string>
 
 </resources>
