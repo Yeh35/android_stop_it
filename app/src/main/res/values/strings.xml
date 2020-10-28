@@ -2,7 +2,9 @@
     <string name="app_name">stop_it</string>
     <string name="home">Home</string>
     <string name="user">User</string>
-    <string name="than_yesterday">어제보다-</string>
+
+    <string name="usage_today_count">%s회</string>
+    <string name="than_yesterday">어제보다-%s회</string>
 
     <string name="hourglass">모래시계</string>
     <string name="grented">허용</string>

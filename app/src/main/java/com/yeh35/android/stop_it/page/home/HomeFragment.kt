@@ -5,16 +5,19 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.siblingelement.location_alarm_android_app.ui.baase.BaseFragment
 import com.yeh35.android.stop_it.R
+import com.yeh35.android.stop_it.widget.UsageTodayCountView
 import com.yeh35.android.stop_it.widget.UsageTodayView
 import kotlinx.coroutines.launch
 
 class HomeFragment : BaseFragment() {
 
-    private lateinit var usageTodayView: UsageTodayView
+    private lateinit var viewModel: HomeViewModel
 
-    private var repeatedInSecondsThreadStop = System.currentTimeMillis()
+    private lateinit var usageTodayCountView: UsageTodayCountView
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -22,29 +25,23 @@ class HomeFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View? {
         baseView = inflater.inflate(R.layout.fragment_home, container, false)
-        usageTodayView = baseView.findViewById(R.id.usage_today)
+
+        viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
+
+        usageTodayCountView = baseView.findViewById(R.id.usage_today_count)
+
+        viewModel.todayUsageCount.observe(this.viewLifecycleOwner, Observer {count ->
+            usageTodayCountView.setTodayPlayCount(count)
+        })
+
+        viewModel.yesterdayUsageCount.observe(this.viewLifecycleOwner, Observer {count ->
+            usageTodayCountView.setYesterdayPlayCount(count)
+        })
+
+        viewModel.refreshTodayUsageCount()
+        viewModel.refreshYesterdayUsageCount()
+
         return baseView
     }
 
-    override fun onStart() {
-        super.onStart()
-
-        Thread(Runnable {
-            val startingTime = System.currentTimeMillis()
-
-            while (repeatedInSecondsThreadStop < startingTime) {
-                scopeMain.launch {
-                    usageTodayView.tick()
-                }
-                Thread.sleep(1000)
-            }
-
-            Log.d("repeatedInSecondsThread", "stop")
-        }).start()
-    }
-
-    override fun onStop() {
-        super.onStop()
-        repeatedInSecondsThreadStop = System.currentTimeMillis()
-    }
 }

@@ -22,10 +22,6 @@
         android:name="android.permission.FOREGROUND_SERVICE"
         android:required="false" />
     <uses-permission
-        android:name="android.permission.PACKAGE_USAGE_STATS"
-        android:required="false"
-        tools:ignore="ProtectedPermissions" />
-    <uses-permission
         android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS"
         android:required="false"/>
 

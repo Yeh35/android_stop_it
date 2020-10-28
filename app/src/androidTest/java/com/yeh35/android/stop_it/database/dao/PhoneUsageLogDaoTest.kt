@@ -3,10 +3,11 @@ package com.yeh35.android.stop_it.database.dao
 import com.yeh35.android.stop_it.BaseTest
 import com.yeh35.android.stop_it.database.AppDatabase
 import com.yeh35.android.stop_it.database.entity.DefenceUsageLog
+import org.joda.time.DateTime
 import org.junit.Assert
 import org.junit.Test
 
-class PhoneUsageLogDaoTest : BaseTest() {
+class DefenceUsageLogDaoTest : BaseTest() {
 
     @Test
     fun defenceLog() {
@@ -34,6 +35,21 @@ class PhoneUsageLogDaoTest : BaseTest() {
         Assert.assertEquals(beforeCount + 1, usageLogs.size)
         Assert.assertEquals(true, updatedUsageLog.waited)
         Assert.assertNotEquals(updatedUsageLog.creationDate.millis, updatedUsageLog.modificationDate.millis)
+    }
 
+    @Test
+    fun testQuery_getCountFindWakeUpDateTimeBetweenDates() {
+        val defenceUsageLogDao = AppDatabase.getInstance(getContext()).defenceUsageLogDao()
+
+        defenceUsageLogDao.deleteAll(defenceUsageLogDao.getAll())
+        Assert.assertEquals(0, defenceUsageLogDao.getAll().size)
+
+        val usageLog = DefenceUsageLog()
+        defenceUsageLogDao.insert(usageLog)
+
+        val from= DateTime.now().withTime(0,0,0, 0)
+        val to= from.withTime(23,59,59, 59)
+        val count = defenceUsageLogDao.getCountFindWakeUpDateTimeBetweenDates(from, to)
+        Assert.assertEquals(1, count)
     }
 }

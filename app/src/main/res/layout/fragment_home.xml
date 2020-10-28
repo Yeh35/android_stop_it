@@ -14,18 +14,30 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <com.yeh35.android.stop_it.widget.TitleFrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
-                app:title="사용시간">
+                app:title="사용회수">
 
-                <com.yeh35.android.stop_it.widget.UsageTodayView
-                    android:id="@+id/usage_today"
+                <com.yeh35.android.stop_it.widget.UsageTodayCountView
+                    android:id="@+id/usage_today_count"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
+
+            </com.yeh35.android.stop_it.widget.TitleFrameLayout>
+
+            <com.yeh35.android.stop_it.widget.TitleFrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:layout_marginTop="8dp"
+                app:title="가드 성적">
+
+
 
             </com.yeh35.android.stop_it.widget.TitleFrameLayout>
 

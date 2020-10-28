@@ -37,7 +37,6 @@ class MainActivity : BaseActivity(), View.OnClickListener {
         sharedPreferenceManager = SharedPreferenceManager(this)
 
         AlertWindowPermissionActivity.showWindowPermission(this)
-//        UsageStatsPermissionActivity.showForPermission(this)
 
         val foregroundServiceIntent = Intent(this, OnLockService::class.java)
         startService(foregroundServiceIntent)
