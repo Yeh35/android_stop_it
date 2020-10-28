@@ -3,8 +3,9 @@
     <string name="home">Home</string>
     <string name="user">User</string>
 
-    <string name="usage_today_count">%s회</string>
-    <string name="than_yesterday">어제보다-%s회</string>
+    <string name="int_format_times">%s회</string>
+    <string name="int_format_count">%s개</string>
+    <string name="than_yesterday">어제보다-%s</string>
 
     <string name="hourglass">모래시계</string>
     <string name="grented">허용</string>

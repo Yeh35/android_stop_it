@@ -30,9 +30,10 @@
                     app:title="찾은 양말의 개수">
 
                         <com.yeh35.android.stop_it.widget.UsageTodayCountView
-                            android:id="@+id/usage_today_count"
+                            android:id="@+id/socks_count"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"/>
+                            android:layout_height="wrap_content"
+                            app:count_format="@string/int_format_count"/>
 
                 </com.yeh35.android.stop_it.widget.TitleFrameLayout>
 
@@ -46,7 +47,22 @@
                     <com.yeh35.android.stop_it.widget.UsageTodayCountView
                         android:id="@+id/usage_count"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        app:count_format="@string/int_format_times"/>
+
+                </com.yeh35.android.stop_it.widget.TitleFrameLayout>
+
+                <com.yeh35.android.stop_it.widget.TitleFrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:layout_marginTop="8dp"
+                    app:title="차트">
+
+                    <com.github.mikephil.charting.charts.BarChart
+                        android:id="@+id/barChart"
+                        android:layout_width="match_parent"
+                        android:layout_height="260dp"/>
 
                 </com.yeh35.android.stop_it.widget.TitleFrameLayout>
 

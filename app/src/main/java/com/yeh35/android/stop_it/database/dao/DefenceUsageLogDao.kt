@@ -19,4 +19,7 @@ abstract class DefenceUsageLogDao : AbstractBaseDao<DefenceUsageLog>() {
 
     @Query("SELECT COUNT(*) FROM defence_usage_log WHERE wake_up_date_time BETWEEN :from AND :to")
     abstract fun getCountFindWakeUpDateTimeBetweenDates(from: DateTime, to: DateTime): Int
+
+    @Query("SELECT COUNT(*) FROM defence_usage_log WHERE wake_up_date_time BETWEEN :from AND :to AND waited = 1")
+    abstract fun getSocksCountFindWakeUpDateTimeBetweenDates(from: DateTime, to: DateTime): Int
 }

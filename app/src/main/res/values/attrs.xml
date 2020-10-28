@@ -3,4 +3,8 @@
     <declare-styleable name="TitleFrameLayout">
         <attr name="title" format="string"/>
     </declare-styleable>
+
+    <declare-styleable name="UsageTodayCountView">
+        <attr name="count_format" format="reference"/>
+    </declare-styleable>
 </resources>

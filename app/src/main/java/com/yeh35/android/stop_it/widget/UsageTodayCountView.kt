@@ -7,7 +7,10 @@ import android.view.View
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.res.getStringOrThrow
+import com.bumptech.glide.load.engine.Resource
 import com.yeh35.android.stop_it.R
+import java.lang.ref.Reference
 import java.text.NumberFormat
 import java.util.*
 
@@ -21,6 +24,8 @@ class UsageTodayCountView(context: Context, attrs: AttributeSet) : FrameLayout(c
     private var todayPlayCount: Int = 0
     private var yesterdayPlayCount: Int = 0
 
+    private var countFormat: Int
+
     init {
 
         val li = getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -30,6 +35,14 @@ class UsageTodayCountView(context: Context, attrs: AttributeSet) : FrameLayout(c
         tvTodayTime = baseView.findViewById(R.id.tv_today_time)
         tvThanYesterdayTime = baseView.findViewById(R.id.tv_than_yesterday_time)
         imageUpDown = baseView.findViewById(R.id.image_updown)
+
+        context.theme.obtainStyledAttributes(
+            attrs,
+            R.styleable.UsageTodayCountView,
+            0, 0).apply {
+
+            countFormat = getResourceId(R.styleable.UsageTodayCountView_count_format, R.string.int_format_count)
+        }
 
         updateView()
     }
@@ -46,12 +59,18 @@ class UsageTodayCountView(context: Context, attrs: AttributeSet) : FrameLayout(c
 
     private fun updateView() {
         tvTodayTime.text = context.resources.getString(
-            R.string.usage_today_count,
+            countFormat,
             NumberFormat.getNumberInstance(Locale.US).format(todayPlayCount)
         )
+
+        val yesterdayCount = context.resources.getString(
+            countFormat,
+            NumberFormat.getNumberInstance(Locale.US).format(yesterdayPlayCount)
+        )
+
         tvThanYesterdayTime.text = context.resources.getString(
             R.string.than_yesterday,
-            NumberFormat.getNumberInstance(Locale.US).format(yesterdayPlayCount)
+            yesterdayCount
         )
 
         if (todayPlayCount > yesterdayPlayCount) {
