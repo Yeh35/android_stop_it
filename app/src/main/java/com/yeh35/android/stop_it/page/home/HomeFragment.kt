@@ -32,7 +32,12 @@ class HomeFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
         swipeRefresh.setOnRefreshListener(this)
 
         socksCountView = baseView.findViewById(R.id.socks_count)
-
+        viewModel.todaySocksCount.observe(this.viewLifecycleOwner, Observer {count ->
+            socksCountView.setTodayPlayCount(count)
+        })
+        viewModel.yesterdaySocksCount.observe(this.viewLifecycleOwner, Observer {count ->
+            socksCountView.setYesterdayPlayCount(count)
+        })
 
         usageCountView = baseView.findViewById(R.id.usage_count)
         viewModel.todayUsageCount.observe(this.viewLifecycleOwner, Observer {count ->
