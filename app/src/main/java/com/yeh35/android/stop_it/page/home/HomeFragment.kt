@@ -18,6 +18,7 @@ class HomeFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
     private lateinit var socksCountView: UsageTodayCountView
     private lateinit var usageCountView: UsageTodayCountView
     private lateinit var swipeRefresh: SwipeRefreshLayout
+//    private lateinit var barChart: BarChart
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -47,6 +48,8 @@ class HomeFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
             usageCountView.setYesterdayPlayCount(count)
         })
 
+//        barChart = baseView.findViewById(R.id.barChart)
+
         refresh()
         return baseView
     }
@@ -61,7 +64,19 @@ class HomeFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
         viewModel.refreshSocksCount()
     }
 
-    private fun setChar() {
-
-    }
+    //TODO 차트를 하려고 했지만 귀찮음으로.. pass
+//    private fun setChar() {
+//        barChart.xAxis.apply {
+//            position = XAxis.XAxisPosition.TOP // X축 데이터의 위치
+//            textSize = 10f //텍스트 크기 지정
+//            setDrawGridLines(false) // 배경 그리드 라인 세팅
+//            granularity = 1f // x 축 데이터 표시 간격
+//            axisMinimum = 2f // x 축 데이터 최소 표시값
+//            isGranularityEnabled = false // x 축 간격을 제한하는 세분화 기능
+//        }
+//
+//        barChart.apply {
+//            axisRight.isEnabled = false // y축
+//        }
+//    }
 }

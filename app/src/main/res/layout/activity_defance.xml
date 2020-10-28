@@ -32,6 +32,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_time" />
 
+
+
     <Button
         android:id="@+id/btn_pass"
         style="@style/BlueBorderWhiteBackGround"

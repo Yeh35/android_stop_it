@@ -79,6 +79,15 @@ class DefenceActivity : BaseActivity() {
                 val remaining = DateTime(endTime.millis - DateTime.now().millis)
 
                 if (remaining.isAfter(1000)) {
+
+                    scopeMain.launch {
+                        tv_time.text = resources.getString(
+                            R.string.defence_time_format,
+                            remaining.minuteOfHour,
+                            remaining.secondOfMinute
+                        )
+                    }
+
                     Thread.sleep(1000)
                 } else {
                     scopeMain.launch {

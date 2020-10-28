@@ -18,10 +18,6 @@ import com.yeh35.android.stop_it.page.MainActivity
 
 class OnLockService : Service() {
 
-    companion object {
-        var serviceIntent: Intent? = null
-    }
-
     private var mReceiver: BroadcastReceiver? = null
 
     override fun onBind(intent: Intent?): IBinder? {
@@ -47,9 +43,9 @@ class OnLockService : Service() {
          * startForeground 를 사용하면 notification 을 보여주어야 하는데 없애기 위한 코드
          */
         val style = NotificationCompat.BigTextStyle()
-        style.bigText("설정을 보려면 누르세요.")
+        style.bigText("얼마나 모았을까요?")
         style.setBigContentTitle(null)
-        style.setSummaryText("서비스 동작중")
+        style.setSummaryText("양말 수집중")
 
         val notificationIntent = Intent(this, MainActivity::class.java)
         val pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0)
@@ -128,7 +124,7 @@ class OnLockService : Service() {
 
         val firstTime = SystemClock.elapsedRealtime() + 1*1000
         val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        alarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, firstTime, 100, sender)
+        alarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, firstTime, 1000, sender)
     }
 
     /**

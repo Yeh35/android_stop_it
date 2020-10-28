@@ -52,19 +52,19 @@
 
                 </com.yeh35.android.stop_it.widget.TitleFrameLayout>
 
-                <com.yeh35.android.stop_it.widget.TitleFrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:layout_marginTop="8dp"
-                    app:title="차트">
+<!--                <com.yeh35.android.stop_it.widget.TitleFrameLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:background="@color/white"-->
+<!--                    android:layout_marginTop="8dp"-->
+<!--                    app:title="차트">-->
 
-                    <com.github.mikephil.charting.charts.BarChart
-                        android:id="@+id/barChart"
-                        android:layout_width="match_parent"
-                        android:layout_height="260dp"/>
+<!--                    <com.github.mikephil.charting.charts.BarChart-->
+<!--                        android:id="@+id/barChart"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="260dp"/>-->
 
-                </com.yeh35.android.stop_it.widget.TitleFrameLayout>
+<!--                </com.yeh35.android.stop_it.widget.TitleFrameLayout>-->
 
             </LinearLayout>
 
