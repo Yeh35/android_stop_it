@@ -1,6 +1,5 @@
 package com.yeh35.android.stop_it.service
 
-import android.R
 import android.app.*
 import android.content.BroadcastReceiver
 import android.content.Context
@@ -11,6 +10,7 @@ import android.os.IBinder
 import android.os.SystemClock
 import android.util.Log
 import androidx.core.app.NotificationCompat
+import com.yeh35.android.stop_it.R
 import com.yeh35.android.stop_it.broadcast.RestartReceiver
 import com.yeh35.android.stop_it.broadcast.ScreenReceiver
 import com.yeh35.android.stop_it.page.MainActivity
@@ -51,7 +51,7 @@ class OnLockService : Service() {
         val pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0)
 
         val notification = NotificationCompat.Builder(this, "1")
-            .setSmallIcon(R.mipmap.sym_def_app_icon)
+            .setSmallIcon(R.mipmap.ic_dobby_round)
             .setContentText(null)
             .setContentTitle(null)
             .setOngoing(true)

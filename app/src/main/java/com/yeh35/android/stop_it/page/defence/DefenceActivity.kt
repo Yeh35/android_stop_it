@@ -1,5 +1,6 @@
 package com.yeh35.android.stop_it.page.defence
 
+import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -65,6 +66,7 @@ class DefenceActivity : BaseActivity() {
         }
     }
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     override fun onStart() {
         super.onStart()
 
@@ -91,7 +93,10 @@ class DefenceActivity : BaseActivity() {
                     Thread.sleep(1000)
                 } else {
                     scopeMain.launch {
+                        tv_time.text = ""
                         btn_pass.text = resources.getString(R.string.you_endured)
+
+                        iv_hourglass.setImageDrawable(resources.getDrawable(R.drawable.socks, null))
                     }
 
                     phoneUsageLog.waited()
